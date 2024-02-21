@@ -121,3 +121,37 @@ const threeDRectangle = {
 // })
 //but when pass by reference.its ok
 drawRectangle(threeDRectangle);
+// working with generics
+const addID = (obj) => {
+    let id = Math.floor(Math.random() * 100);
+    return Object.assign(Object.assign({}, obj), { id });
+};
+let user = addID({
+    name: 'Mashrafi',
+    age: 40,
+    country: 'Bangledesh'
+});
+console.log('user data -> ', user);
+console.log(user.age);
+// ENUMS Types
+var ResType;
+(function (ResType) {
+    ResType[ResType["SUCCESS"] = 0] = "SUCCESS";
+    ResType[ResType["FAILURE"] = 1] = "FAILURE";
+    ResType[ResType["UNAUTHENTICATED"] = 2] = "UNAUTHENTICATED";
+    ResType[ResType["FORVIDDEN"] = 3] = "FORVIDDEN";
+})(ResType || (ResType = {}));
+;
+const response1 = {
+    status: 200,
+    type: ResType.SUCCESS,
+    data: {
+        name: "hello",
+        last: 'world'
+    }
+};
+console.log('response data -> ', response1);
+//TUPLES
+let val = [3, 'hello', { p: 3 }];
+let val2 = [4, 'world', { t: 1 }];
+val[1] = 'false';

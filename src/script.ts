@@ -185,3 +185,49 @@ const threeDRectangle = {
 
 //but when pass by reference.its ok
 drawRectangle(threeDRectangle)
+
+
+// working with generics
+const addID = <T extends object>(obj: T) => {
+    let id = Math.floor(Math.random() * 100);
+    return {...obj, id}
+}
+
+let user = addID({
+    name: 'Mashrafi',
+    age: 40,
+    country: 'Bangledesh'
+})
+
+console.log('user data -> ',user)
+console.log(user.age)
+
+
+// ENUMS Types
+enum ResType { SUCCESS, FAILURE, UNAUTHENTICATED, FORVIDDEN };
+
+interface APIResponse<T> {
+    status: number;
+    type: ResType;
+    data: T;
+}
+
+const response1: APIResponse<object> = {
+    status: 200,
+    type: ResType.SUCCESS,
+    data: {
+        name: "hello",
+        last: 'world'
+    }
+}
+
+console.log('response data -> ', response1)
+
+//TUPLES
+
+let val = [3, 'hello', {p: 3}]
+
+let val2:[number, string, object] = [4,'world', {t:1}]
+
+val[1] = 'false'
+
